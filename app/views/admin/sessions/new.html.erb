@@ -1,0 +1,57 @@
+<%= image_tag "http://khohinhnen.com/wp-content/uploads/2015/01/hinh-anh-phong-canh-dep-2.jpg", alt: "Login Full Background", class: "full-bg animation-pulseSlow" %>
+<div id="login-container" class="animation-fadeIn">
+  <div class="login-title text-center">
+    <h1><strong><%= t "please_login" %></strong></h1>
+  </div>
+  <div class="block push-bit">
+    <%= form_for :admin, as: :admin, url: session_path(:admin), html: {id: "form-login" ,class: "form-horizontal form-bordered"} do |f| %>
+     <div class="form-group">
+        <div class="col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="gi gi-envelope"></i></span>
+            <%= f.email_field :email, class: "form-control input-lg", placeholder: "Email", autofocus: true %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="gi gi-asterisk"></i></span>
+            <%= f.password_field :password, class: "form-control input-lg", placeholder: "Password", autocomplete: "off" %>
+          </div>
+        </div>
+      </div>
+     <div class="form-group form-actions">
+        <div class="col-xs-4">
+          <label class="switch switch-primary" data-toggle="tooltip" title="Remember Me?">
+            <input type="checkbox" id="login-remember-me" name="login-remember-me" class="form-control" checked>
+            <span></span>
+          </label>
+        </div>
+        <div class="col-xs-8 text-right">
+          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i><%= t "login_dashboard" %></button>
+        </div>
+      </div>
+    <% end %>
+    <form action="login_full.html#reminder" method="post" id="form-reminder" class="form-horizontal form-bordered form-control-borderless display-none">
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="gi gi-envelope"></i></span>
+            <input type="text" id="reminder-email" name="reminder-email" class="form-control input-lg" placeholder="Email">
+          </div>
+        </div>
+      </div>
+      <div class="form-group form-actions">
+        <div class="col-xs-12 text-right">
+          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Reset Password</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-12 text-center">
+          <small>Did you remember your password?</small> <a href="javascript:void(0)" id="link-reminder"><small>Login</small></a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

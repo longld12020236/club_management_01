@@ -4,10 +4,10 @@
       <div class="sidebar-section sidebar-user clearfix sidebar-nav-mini-hide">
         <div class="sidebar-user-avatar">
           <%= link_to t("do_nothing") do %>
-            <%= image_tag "placeholders/avatars/avatar2.jpg" %>
+            <%= image_tag "default_user.png" %>
           <% end %>
         </div>
-        <div class="sidebar-user-name"></div>
+        <div class="sidebar-user-name"><%= current_admin.full_name %></div>
         <div class="sidebar-user-links">
           <%= link_to t("do_nothing"), title: t("profile") do %>
             <i class="gi gi-user"></i></a>
@@ -25,25 +25,16 @@
           <span class="sidebar-header-title"><%= t "admin_page" %></span>
         </li>
         <li>
-          <%= link_to t("do_nothing") do %>
+          <%= link_to admin_home_path do %>
             <i class="gi gi-leaf sidebar-nav-icon"></i>
             <span class="sidebar-nav-mini-hide"><%= t "dashboard" %></span></a>
           <% end %>
         </li>
         <li>
-          <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>
-            <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
+          <%= link_to admin_users_index_path do %>
             <i class="gi gi-user sidebar-nav-icon"></i>
             <span class="sidebar-nav-mini-hide"><%= t "users" %></span></a>
           <% end %>
-          <ul>
-            <li>
-              <%= link_to t("dashboard"), t("do_nothing") %>
-            </li>
-            <li>
-              <%= link_to t("list_users"), t("do_nothing") %>
-            </li>
-          </ul>
         </li>
         <li>
           <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>

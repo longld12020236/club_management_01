@@ -1,6 +1,10 @@
 class CustomFailure < Devise::FailureApp
   def redirect_url
-    root_url
+    if warden_options[:scope] == :user
+      root_url
+    else
+      new_admin_sessions_path
+    end
   end
 
   def respond

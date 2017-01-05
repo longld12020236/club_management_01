@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :news, dependent: :destroy
 
+  belongs_to :organization
 
   mount_uploader :avatar, AvatarUploader
 

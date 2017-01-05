@@ -43,3 +43,9 @@ User.create!(
   phone: "0123456789",
   role: 1
 )
+Admin.create!(
+  email: "longlyduc@gmail.com",
+  full_name: "Ly Duc Long",
+  password: "longlyduc@gmail.com",
+  phone: "0123456789",
+)

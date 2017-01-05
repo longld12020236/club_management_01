@@ -144,3 +144,8 @@ en:
   members: " Members"
   latest: "Latest"
   news: " News"
+  please_login: "Please Login"
+  login_dashboard: "Login to Dashboard"
+  user_name: "User's name"
+  set_company_admin: "Set company admin"
+  show_user: "Show User"
