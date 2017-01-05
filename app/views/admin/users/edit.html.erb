@@ -1,13 +1,36 @@
 <div id="page-content">
   <ul class="breadcrumb breadcrumb-top">
     <li><%= t "show_user" %></li>
-    <li><%= link_to @user.full_name, admin_users_index_path %></a></li>
+    <li><%= link_to @users.full_name, admin_users_index_path %></a></li>
   </ul>
-  <div class="block full">
-    <div class="col-md-6">
-      <div class="block-title">
-        <h2><strong><%= link_to @user.full_name, t("do_nothing") %></strong></h2>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="block full">
+        <div class="block-title">
+          <h2><strong><%= link_to @users.full_name, t("do_nothing") %></strong></h2>
+        </div>
+        <div class="block-content">
+          <div class="center"><%= image_tag @users.avatar,
+                  class: "circle-profile" %></div><hr>
+          <div class="center"><%= @users.full_name %></div><hr>
+          <div class="center"><%= @users.email %></div><hr>
+          <div class="center"><%= @users.phone %></div><hr>
+          <div class="center"><%= @users.organization.name %></div><hr>
+          <div class="center">
+            <% if @users.is_admin_company? %>
+              <%= button_to t("company_admin"), t("do_nothing"),
+                class: "btn btn-lg btn-primary" %>
+            <% else %>
+              <%= form_for [:admin, @users] do |f| %>
+                <%= f.submit t("set_company_admin"), class: "btn btn-lg btn-primary" %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="center"></div>
+        </div>
       </div>
     </div>
+    <div class="col-md-1"></div>
   </div>
 </div>

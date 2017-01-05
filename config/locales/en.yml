@@ -149,3 +149,7 @@ en:
   user_name: "User's name"
   set_company_admin: "Set company admin"
   show_user: "Show User"
+  admin_company_set: "Successfull set company's admin"
+  admin_company_fail: "Cant set admin, please try again"
+  company_admin : "Company Admin"
+  set_company_admin: "Set Company Admin"

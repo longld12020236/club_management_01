@@ -33,7 +33,7 @@ User.create!(
   full_name: "Thanh ManCi",
   password: "mahoangtienthanh@gmail.com",
   phone: "0966.077.747",
-  role: 1
+  is_admin_company: true
 )
 User.create!(
   organization_id: 1,
@@ -41,7 +41,6 @@ User.create!(
   full_name: "Ly Duc Long",
   password: "longlyduc@gmail.com",
   phone: "0123456789",
-  role: 1
 )
 Admin.create!(
   email: "longlyduc@gmail.com",
