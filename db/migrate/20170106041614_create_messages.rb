@@ -5,6 +5,8 @@ class CreateMessages < ActiveRecord::Migration[5.0]
       t.references :club, foreign_key: true
       t.text :content
 
+
+
       t.timestamps
     end
   end
