@@ -1,19 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'users/index'
-  end
-
-  namespace :admin do
-    get 'users/show'
-  end
-
-  namespace :admin do
-    get 'users/edit'
-  end
-
-  namespace :admin do
-    get 'users/update'
-  end
 
   devise_for :users, controllers: {registrations: "registrations"}
   devise_for :admin, controllers: {sessions: "admin/sessions"}
@@ -25,12 +10,17 @@ Rails.application.routes.draw do
   root "static_pages#index"
   resources :club_requests
   resources :users
+  resources :admins
   namespace :admin do
     get "home" => "static_pages#index"
     resources :organizations
+    resources :users
+    resources :organizations, except: [:edit, :update]
   end
   namespace :manager do
-    root "static_pages#index"
+    get "" => "static_pages#index"
+    resources :club_requests
+    resources :organizations, only: [:show, :edit, :update]
   end
   resources :organizations, only: :show
 end

@@ -21,87 +21,82 @@
         </div>
       </div>
       <ul class="sidebar-nav">
-        <li class="sidebar-header">
-          <span class="sidebar-header-title"><%= t "company_manager" %></span>
-        </li>
-        <li>
-          <%= link_to t("do_nothing") do %>
-            <i class="gi gi-leaf sidebar-nav-icon"></i>
-            <span class="sidebar-nav-mini-hide"><%= t "dashboard" %></span></a>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to t("do_nothing") do %>
-            <i class="gi gi-check sidebar-nav-icon"></i>
-            <span class="sidebar-nav-mini-hide">
-              <%= t "approve_club_request" %></span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>
-            <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-            <i class="gi gi-user sidebar-nav-icon"></i>
-            <span class="sidebar-nav-mini-hide">
-              <%= t "members" %>
-            </span>
-          <% end %>
-          <ul>
-            <li>
-              <%= link_to t("dashboard"), t("do_nothing") %>
-            </li>
-            <li>
-              <%= link_to t("list_staff"), t("do_nothing") %>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>
-            <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-            <i class="gi gi-building sidebar-nav-icon"></i>
-            <span class="sidebar-nav-mini-hide"><%= t("my_company") %></span>
-          <% end %>
-          <ul>
-            <li><%= link_to t("Dashboard"), t("do_nothing") %></li>
-            <li><%= link_to t("list_clubs"), t("do_nothing") %></li>
-          </ul>
-        </li>
-        <li class="sidebar-header">
-          <span class="sidebar-header-title"><%= t "clubs_manager" %></span>
-        </li>
-        <li>
-          <%= link_to t("do_nothing") do %>
-            <i class="gi gi-leaf sidebar-nav-icon"></i>
-            <span class="sidebar-nav-mini-hide"><%= t "Dashboard" %></span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>
-            <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-            <i class="gi gi-user sidebar-nav-icon"></i>
-            <span class="sidebar-nav-mini-hide"><%= t "members" %></span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>
-            <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-            <i class="gi gi-group sidebar-nav-icon"></i>
-            <span class="sidebar-nav-mini-hide"><%= t "my_clubs" %></span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>
-            <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-            <i class="gi gi-camera sidebar-nav-icon"></i>
-            <span class="sidebar-nav-mini-hide"><%= t "clubs's_album" %></span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>
-            <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-            <i class="gi gi-gamepad sidebar-nav-icon"></i>
-            <span class="sidebar-nav-mini-hide"><%= t "Event" %></span>
-          <% end %>
-        </li>
+<!--       < % if .is_admin_company %> -->
+          <li class="sidebar-header">
+            <span class="sidebar-header-title"><%= t "company_manager" %></span>
+          </li>
+          <li>
+            <%= link_to manager_path do %>
+              <i class="gi gi-leaf sidebar-nav-icon"></i>
+              <span class="sidebar-nav-mini-hide"><%= t "dashboard" %></span></a>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to manager_club_requests_path do %>
+              <i class="gi gi-check sidebar-nav-icon"></i>
+              <span class="sidebar-nav-mini-hide">
+                <%= t "approve_club_request" %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>
+              <i class="gi gi-user sidebar-nav-icon"></i>
+              <span class="sidebar-nav-mini-hide">
+                <%= t "list_staff" %>
+              </span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>
+              <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
+              <i class="gi gi-building sidebar-nav-icon"></i>
+              <span class="sidebar-nav-mini-hide"><%= t("my_company") %></span>
+            <% end %>
+            <ul>
+              <li><%= link_to t("edit_information"),
+                edit_manager_organization_path(id: 1) %></li>
+              <li><%= link_to t("list_clubs"), t("do_nothing") %></li>
+            </ul>
+          </li>
+<!--         < % else %> -->
+          <li class="sidebar-header">
+            <span class="sidebar-header-title"><%= t "clubs_manager" %></span>
+          </li>
+          <li>
+            <%= link_to t("do_nothing") do %>
+              <i class="gi gi-leaf sidebar-nav-icon"></i>
+              <span class="sidebar-nav-mini-hide"><%= t "Dashboard" %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>
+              <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
+              <i class="gi gi-user sidebar-nav-icon"></i>
+              <span class="sidebar-nav-mini-hide"><%= t "members" %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>
+              <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
+              <i class="gi gi-group sidebar-nav-icon"></i>
+              <span class="sidebar-nav-mini-hide"><%= t "my_clubs" %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>
+              <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
+              <i class="gi gi-camera sidebar-nav-icon"></i>
+              <span class="sidebar-nav-mini-hide"><%= t "clubs's_album" %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to t("do_nothing"), class: "sidebar-nav-menu" do %>
+              <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
+              <i class="gi gi-gamepad sidebar-nav-icon"></i>
+              <span class="sidebar-nav-mini-hide"><%= t "Event" %></span>
+            <% end %>
+          </li>
+<!--         < % end %> -->
       </ul>
     </div>
   </div>

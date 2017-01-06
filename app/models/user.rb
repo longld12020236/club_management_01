@@ -15,7 +15,12 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   validates :full_name, presence: true, length: {maximum: Settings.max_name}
-  validates :password, presence: true, length: {minimum: Settings.min_password}
+  validates :password, presence: true, length: {minimum: Settings.min_password},
+    if: :password_changed?
 
   enum role: {company_admin: 1}
+
+  def password_changed?
+    !@password.blank? or encrypted_password.blank?
+  end
 end

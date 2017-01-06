@@ -1,0 +1,25 @@
+<div id="page-content">
+  <ul class="breadcrumb breadcrumb-top">
+    <li><%= t "show_admin" %></li>
+    <li><%= link_to @admin.full_name, admin_path(current_admin) %></a></li>
+  </ul>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="block full">
+        <div class="block-title">
+          <h2><strong><%= link_to @admin.full_name, t("do_nothing") %></strong></h2>
+        </div>
+        <div class="block-content">
+          <div class="center"><%= image_tag "default_user.png",
+                  class: "circle-profile" %></div><hr>
+          <div class="center"><%= @admin.full_name %></div><hr>
+          <div class="center"><%= @admin.email %></div><hr>
+          <div class="center"><%= @admin.phone %></div><hr>
+          <div class="center"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

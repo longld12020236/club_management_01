@@ -9,7 +9,7 @@
         </div>
         <div class="sidebar-user-name"><%= current_admin.full_name %></div>
         <div class="sidebar-user-links">
-          <%= link_to t("do_nothing"), title: t("profile") do %>
+          <%= link_to admin_path(current_admin), title: t("profile") do %>
             <i class="gi gi-user"></i></a>
           <% end %>
           <%= link_to "#modal-user-settings", title: t("setting") do %>
@@ -31,9 +31,16 @@
           <% end %>
         </li>
         <li>
-          <%= link_to admin_users_index_path do %>
+          <%= link_to admin_users_path do %>
             <i class="gi gi-user sidebar-nav-icon"></i>
             <span class="sidebar-nav-mini-hide"><%= t "users" %></span></a>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to t("do_nothing") do %>
+            <i class="gi gi-check sidebar-nav-icon"></i>
+            <span class="sidebar-nav-mini-hide">
+              <%= t "approve_ogranization_request" %></span>
           <% end %>
         </li>
         <li>
@@ -44,13 +51,10 @@
           <% end %>
           <ul>
             <li>
-              <%= link_to t("dashboard"), t("do_nothing") %>
+              <%= link_to t("list_companies"), admin_organizations_path %>
             </li>
             <li>
-              <%= link_to t("list_companies"), t("do_nothing") %>
-            </li>
-            <li>
-              <%= link_to t("new_companies"), t("do_nothing") %>
+              <%= link_to t("new_companies"), new_admin_organization_path %>
             </li>
           </ul>
         </li>

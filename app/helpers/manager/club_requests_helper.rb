@@ -1,0 +1,2 @@
+module Manager::ClubRequestsHelper
+end

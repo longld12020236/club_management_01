@@ -1,13 +1,13 @@
 <div id="page-content">
   <ul class="breadcrumb breadcrumb-top">
     <li><%= t "admin" %></li>
-    <li><%= link_to t("list_users"), admin_users_index_path %></a></li>
+    <li><%= link_to t("list_users"), admin_users_path %></a></li>
   </ul>
   <!-- END Datatables Header -->
   <!-- Datatables Content -->
   <div class="block full">
     <div class="block-title">
-      <h2><strong><%= t "management" %></strong><%= t " users" %></h2>
+      <h2><strong><%= t " users" %></strong></h2>
     </div>
     <div class="table-responsive">
       <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
@@ -31,7 +31,7 @@
               <td><%= user.email %></td>
               <td><%= user.organization.name %></td>
               <td class="text-center">
-                <%= link_to t("view"), admin_users_edit_path(id: user.id),
+                <%= link_to t("view"), admin_user_path(id: user.id),
                   class: "btn btn-lg btn-primary" %>
               </td>
             </tr>

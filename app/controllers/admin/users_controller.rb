@@ -1,22 +1,23 @@
 class Admin::UsersController < ApplicationController
+  before_action :load_user, except: :index
   layout "admin_layout"
 
   def index
     @users = User.all
-    @o = Organization.all
   end
 
-  def edit
-    @users = User.find_by id: params[:id]
+  def show
+
   end
 
-  def update
-    @users.is_admin_company = true
-    if @users.update_attributes is_admin_company: true
-      flash[:success] = t("admin_company_set")
-    else
-      flash[:danger] = t("admin_company_fail")
+
+  private
+
+  def load_user
+    @user = User.find_by id: params[:id]
+    unless @user
+      flash[:danger] = "Can not found user"
+      redirect_to admin_users_path
     end
-    redirect_to :back
   end
 end

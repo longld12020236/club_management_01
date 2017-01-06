@@ -16,7 +16,7 @@
     <li class="dropdown">
       <%= link_to t("do_nothing"), {class: "dropdown-toggle",
         "data-toggle": "dropdown"} do %>
-        <%= image_tag "default_user.png" %>
+        <%= image_tag "placeholders/avatars/avatar2.jpg" %>
         <b class="caret"></b>
       <% end %>
       <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
@@ -37,7 +37,7 @@
           <% end %>
         </li>
         <li>
-          <%= link_to destroy_admin_path, method: :delete do %>
+          <%= link_to t("do_nothing") do %>
             <i class="fa fa-ban fa-fw pull-right"></i><%= t "log out" %>
           <% end %>
         </li>

@@ -1,0 +1,43 @@
+<div id="page-content">
+  <ul class="breadcrumb breadcrumb-top">
+    <li><%= t "company_manager" %></li>
+    <li><%= link_to t("request"), t("no_thing") %></li>
+  </ul>
+  <div class="block full">
+    <div class="block-title">
+      <h2><strong><%= t "management" %></strong><%= t "request" %></h2>
+    </div>
+    <div class="table-responsive">
+      <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
+        <thead>
+          <tr>
+            <th class="text-center"><%= t "id" %></th>
+            <th class="text-center"><i class="gi gi-user"></i></th>
+            <th><%= t "requester" %></th>
+            <th><%= t "company_name" %></th>
+            <th><%= t "email" %></th>
+            <th class="text-center"><%= t "action" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @club_requests.each do |club_request|  %>
+            <tr>
+              <td class="text-center"><%= club_request.id %></td>
+              <td class="text-center"><%= club_request.user.avatar %></td>
+              <td><%= club_request.user.full_name %></td>
+              <td><%= club_request.user.email %></td>
+              <td></td>
+              <td class="text-center" >
+                <div class="btn-group">
+                  <%= link_to edit_manager_club_request_path(club_request),
+                    class: "btn btn-lg btn-primary" do %>
+                    <i class="fa fa-pencil"></i>
+                  <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

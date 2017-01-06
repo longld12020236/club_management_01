@@ -1,0 +1,33 @@
+<div id="page-content">
+  <ul class="breadcrumb breadcrumb-top">
+    <li><%= t "show_user" %></li>
+    <li><%= link_to @user.full_name, admin_users_path %></a></li>
+  </ul>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="block full">
+        <div class="block-title">
+          <h2><strong><%= link_to @user.full_name, t("do_nothing") %></strong></h2>
+        </div>
+        <div class="block-content">
+          <div class="center"><%= image_tag @user.avatar,
+                  class: "circle-profile" %></div><hr>
+          <div class="center"><%= @user.full_name %></div><hr>
+          <div class="center"><%= @user.email %></div><hr>
+          <div class="center"><%= @user.phone %></div><hr>
+          <div class="center"><%= @user.organization.name %></div><hr>
+          <div class="center">
+            <% if @user.is_admin_company? %>
+                <%= link_to t("company_admin"), t("do_nothing"), class: "btn btn-lg btn-primary" %>
+            <% else %>
+                <%= link_to t("not_company_admin"), t("do_nothing"), class: "btn btn-lg btn-primary" %>
+            <% end %>
+          </div>
+          <div class="center"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

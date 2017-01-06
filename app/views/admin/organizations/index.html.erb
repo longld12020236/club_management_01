@@ -1,0 +1,39 @@
+<div id="page-content">
+  <ul class="breadcrumb breadcrumb-top">
+    <li><%= t "admin" %></li>
+    <li><%= link_to t("list_companies"), admin_organizations_path %></a></li>
+  </ul>
+  <div class="block full">
+    <div class="block-title">
+      <h2><strong><%= t "management" %></strong><%= t " companies" %></h2>
+    </div>
+    <div class="table-responsive">
+      <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
+        <thead>
+          <tr>
+            <th class="text-center"><%= t "id" %></th>
+            <th class="text-center"><i class="gi gi-building"></i></th>
+            <th><%= t "company_name" %></th>
+            <th><%= t "email" %></th>
+            <th><%= t "location" %></th>
+            <th><%= t "description" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @organizations.each do |organization|%>
+            <tr>
+              <td class="text-center"><%= organization.id %></td>
+              <td class="text-center"><%= image_tag "default.png",
+                class: "circle-profile-list" %></td>
+              <td><%= organization.name %></a></td>
+              <td><%= organization.email %></td>
+              <td><%= organization.location %></td>
+              <td><%= organization.description %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>$(function(){ TablesDatatables.init(); });</script>
