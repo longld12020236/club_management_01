@@ -1,0 +1,109 @@
+<div id="page-content">
+  <ul class="breadcrumb breadcrumb-top">
+    <li><%= t "club_management" %></li>
+    <li><%= link_to @club.name, t("do_nothing") %></li>
+  </ul>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="block">
+        <div class="block-title">
+          <h2><strong><%= t "club_manager.event.new" %></strong></h2>
+        </div>
+        <%= form_for :event, url: club_manager_club_events_path(club_id: @club.id), method: :post, html: {multipart:true, enctype: "multipart/form-data", class: "form-horizontal form-bordered"} do |f| %>
+          <%= f.hidden_field :club_id, value: @club.id %>
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="example-text-input"><%= t "name" %></label>
+            <div class="col-md-6">
+              <%= f.text_field :name, class: "form-control", placeholder: t("club_manager.event.event_name") %>
+              <span class="help-block"><%= t "club_manager.event.name_guide" %></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="example-text-input"><%= t "club_manager.event.expense" %></label>
+            <div class="col-md-6">
+              <%= f.number_field :expense, class: "form-control", placeholder: t("club_manager.event.expense_holder") %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="example-text-input"><%= t "location" %></label>
+            <div class="col-md-6">
+              <%= f.text_field :location, class: "form-control", placeholder: t("club_manager.event.location_holder") %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="example-text-input"><%= t "club_manager.event.start" %></label>
+            <div class="col-md-6">
+              <div class="input-group input-daterange" data-date-format="mm/dd/yyyy">
+                  <%= f.text_field :date_start, class: "form-control text-center", placeholder: t("club_manager.event.day_start") %>
+                  <span class="input-group-addon"><i class="fa fa-angle-right"></i></span>
+                  <%= f.text_field :date_end, class: "form-control text-center", placeholder: t("club_manager.event.day_end") %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="example-textarea-input"><%= t "description" %></label>
+            <div class="col-md-6">
+              <%= f.text_area :description, rows: 9, class: "form-control",  placeholder: t("club_manager.event.description") %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="example-file-input"><%= t "club_manager.event.image" %></label>
+            <div class="col-md-6">
+              <%= f.file_field :image %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-6 col-md-offset-5">
+              <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> <%= t "submit" %></button>
+              <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-repeat"></i><%= t "reset" %></button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6 pull-right">
+      <div class="block">
+        <div class="block-title">
+          <h2><strong><%= @club.name %></strong></h2>
+        </div>
+        <div class="row"  >
+          <div class="col-md-5" >
+            <a href="img/placeholders/photos/photo1.jpg" data-toggle="lightbox-image">
+              <img src="img/placeholders/photos/photo1.jpg" alt="image">
+            </a>
+          </div>
+          <div class="col-md-7 pull-right" >
+            <p><%= @club.notification %></p>
+            <p><%= @club.description %></p>
+            <div class="col-md-6 col-md-offset-4">
+              <%= link_to "#modal-club-edit", data: {toggle: "modal"}, class: "btn btn-sm btn-primary" do %>
+                <i class="fa fa-pencil"></i><%= t "edit" %>
+              <% end %>
+            </div>
+          </div>
+        </div><br>
+      </div>
+      <div class="block">
+        <div class="block-title">
+          <h2><strong><%= t "members" %></strong></h2>
+        </div>
+        <div class="row text-center">
+          <% @club.users.newest.each do |f|  %>
+            <div class="col-sm-4">
+              <%= link_to club_manager_club_member_path(id: f.id, club_id: @club.id) do %>
+                <%= image_tag f.avatar, class: "circle-profile-list" %>
+              <% end %>
+              <h4><%= f.full_name %></h4>
+            </div>
+          <% end %>
+        </div>
+        <div class="text-center">
+          <%= link_to t("view_more"), club_manager_club_members_path(club_id: @club.id) %>
+        </div><br>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-club-edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <%= render "popups/edit_club_detail" %>
+</div>

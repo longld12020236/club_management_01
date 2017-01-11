@@ -1,0 +1,28 @@
+<% if @albums.blank? %>
+  <div class="block"><h1 class="text-center"><strong><b><%= t "club_manager.album.no_album" %></b></strong></h1></div>
+<% else %>
+  <div class="row">
+    <% @albums.each do |album|%>
+      <div class="col-sm-4 gallery-image">
+        <%= image_tag "placeholders/photos/photo15.jpg" %>
+        <div class="carousel-caption">
+          <h1><p><%= album.name %></p></h1>
+        </div>
+        <div class="gallery-image-options text-center">
+          <div class="btn-group btn-group-sm">
+            <%= link_to t("view"), club_manager_club_album_path(id: album.id),
+              class: "btn btn-sm btn-alt btn-primary" %>
+            <a href="#modal-club-edit" class="btn btn-sm btn-alt btn-default" data-toggle="modal" title="Edit"><i class="fa fa-pencil"></i></a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="text-center">
+      <ul class="pagination pagination-lg">
+         <%= paginate @albums %>
+      </ul>
+    </div>
+  </div>
+<% end %>

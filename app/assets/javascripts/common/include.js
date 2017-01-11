@@ -8,7 +8,7 @@ $(document).ready(function() {
       $(".notify").slideUp(300, function() {
         $(".notify").hide();
       });
-    }, 3000);
+    }, 6000);
   });
   $(".close-message").click(function(){
     $(".notify").slideUp(300, function() {

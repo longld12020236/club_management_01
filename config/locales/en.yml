@@ -1,8 +1,4 @@
 en:
-  full_name: "Full Name"
-  placeholder_password: "Please choose a complex one.."
-  require_info: "Required Information"
-  register: "Register"
   line: "Line"
   times: "Time"
   lorem: "Bring your project to life months sooner"
@@ -222,7 +218,6 @@ en:
   cant_create_admin: "Cant create admin organization"
   cant_create_organization: "Cant create organization"
   cant_approve: "Cant approve request, please check request info and try again!"
-  user_info: "User Information:"
   not_correct_manager: "You are not manager of this club!"
   list_members: "List members"
   member:
@@ -235,3 +230,28 @@ en:
   manager_require: "You are not manager!"
   sign_out: "Sign out"
   account: "Account"
+  club_manager:
+    cant_fount: "Cant found club!"
+    event:
+      new: "New Events"
+      name_guide: "Event's name cant blank and must have atleast 10 characters"
+      expense: "Event's Expense"
+      start: "Date start"
+      image: "Event Image"
+      event_name: "Event's name"
+      expense_holder: "Enter Event's expense"
+      location_holder: "Event's location..."
+      day_start: "From"
+      day_end: "To"
+      description: "Event's description..."
+      succsess_create: "Successfull create new event"
+    club:
+      success_update: "Updated Club"
+
+  club_management: "Club management"
+  none: "None"
+  view: "View"
+  list_request: "List request"
+  information: " information"
+  notification: "Notification"
+  save: "Save"

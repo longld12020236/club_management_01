@@ -1,4 +1,5 @@
 class ClubManager::MembersController < BaseClubManagerController
+
   before_action :correct_manager
   before_action :load_member, only: :show
   before_action :load_correct_member, only: :show

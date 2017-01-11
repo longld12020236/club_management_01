@@ -4,12 +4,11 @@ class BaseClubManagerController < ApplicationController
   before_action :user_signed_in
   before_action :manager_verify
 
-  protected
   def manager_verify
     @manager = current_user.user_clubs.manager
     unless @manager
       flash[:danger] = t("manager_require")
-      redirect_to root_path
+      redirect_to :back
     end
   end
 

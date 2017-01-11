@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "static_pages#index"
+
   devise_for :users, controllers: {registrations: "registrations", sessions: "authentications"}
   devise_for :admin, controllers: {sessions: "admin/sessions"}
 
@@ -20,8 +21,11 @@ Rails.application.routes.draw do
 
   namespace :club_manager do
     get "/" => "static_pages#index"
-    resources :clubs, only: :show do
+    resources :clubs, only: [:show, :edit, :update] do
       resources :members, only: [:index, :show]
+      resources :events
+      resources :albums
+      resources :images
     end
   end
 
