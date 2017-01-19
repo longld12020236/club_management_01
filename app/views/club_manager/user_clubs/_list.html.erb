@@ -7,9 +7,8 @@
     <td><%= user_club.email %></td>
     <td><%= user_club.phone %></td>
     <td class="text-center">
-      <%= form_for [:club_manager, @club, user_club] do |f| %>
-        <%= f.submit t("approve"), class: "btn btn-lg btn-primary" %>
-      <% end %>
+      <%= link_to t("view"), edit_club_manager_club_user_club_path(id: user_club.id),
+        class: "btn btn-lg btn-primary" %>
     </td>
   </tr>
 <% end %>

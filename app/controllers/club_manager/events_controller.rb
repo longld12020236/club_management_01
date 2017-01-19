@@ -63,6 +63,6 @@ class ClubManager::EventsController < BaseClubManagerController
 
   def event_params
     params.require(:event).permit :club_id, :name, :date_start,
-      :expense, :date_end, :location, :description, :image
+      :expense, :date_end, :location, :description, :image, :event_category_id
   end
 end

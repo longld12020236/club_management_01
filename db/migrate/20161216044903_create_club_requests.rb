@@ -7,7 +7,7 @@ class CreateClubRequests < ActiveRecord::Migration[5.0]
       t.text :description
       t.string :action
       t.string :logo
-      t.boolean :approve, default: false
+      t.references :status, foreign_key: true, default: 1
       t.timestamps
     end
   end
