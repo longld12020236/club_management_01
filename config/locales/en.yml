@@ -1,4 +1,5 @@
 en:
+  request_to_join: "request to join club"
   approve_success: "Request approve successfull"
   finished: "Finished"
   spend-money: "Spend Money"
@@ -293,7 +294,7 @@ en:
   club_manager:
     cant_fount: "Can found club!"
     user_club:
-      success_update: "Approve request to join successfull!"
+      success_update: "Update status successfull!"
     news:
       title: "Title"
       content: "Content"

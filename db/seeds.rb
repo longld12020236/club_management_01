@@ -74,6 +74,16 @@ EventCategory.create!(
   name: "Periodic Money",
 )
 
+Status.create!(
+  status_content: "pending",
+)
+Status.create!(
+  status_content: "approved",
+)
+Status.create!(
+  status_content: "reject",
+)
+
 users = User.order(:created_at).take(2)
 clubs = Club.order(:created_at).take(15)
 clubs.each do |club|

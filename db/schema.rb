@@ -69,10 +69,11 @@ ActiveRecord::Schema.define(version: 20170113134100) do
     t.text     "description",     limit: 65535
     t.string   "action"
     t.string   "logo"
-    t.boolean  "approve",                       default: false
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.integer  "status_id",                     default: 1
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.index ["organization_id"], name: "index_club_requests_on_organization_id", using: :btree
+    t.index ["status_id"], name: "index_club_requests_on_status_id", using: :btree
     t.index ["user_id"], name: "index_club_requests_on_user_id", using: :btree
   end
 
@@ -83,11 +84,11 @@ ActiveRecord::Schema.define(version: 20170113134100) do
     t.text     "description",     limit: 65535
     t.integer  "money",                         default: 0
     t.float    "rating",          limit: 24,    default: 0.0
-    t.boolean  "is_active",                     default: false
+    t.boolean  "is_active",                     default: true
     t.string   "logo"
     t.string   "image"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.index ["organization_id"], name: "index_clubs_on_organization_id", using: :btree
   end
 
@@ -182,9 +183,10 @@ ActiveRecord::Schema.define(version: 20170113134100) do
     t.string   "email"
     t.text     "location",    limit: 65535
     t.string   "logo"
-    t.boolean  "approve",                   default: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.integer  "status_id",                 default: 1
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.index ["status_id"], name: "index_organization_requests_on_status_id", using: :btree
     t.index ["user_id"], name: "index_organization_requests_on_user_id", using: :btree
   end
 
@@ -209,6 +211,12 @@ ActiveRecord::Schema.define(version: 20170113134100) do
     t.index ["user_id"], name: "index_ratings_on_user_id", using: :btree
   end
 
+  create_table "statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "status_content"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "target_hobbies_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "hobbies_tag_id"
     t.integer  "target_id"
@@ -222,10 +230,11 @@ ActiveRecord::Schema.define(version: 20170113134100) do
     t.integer  "user_id"
     t.integer  "club_id"
     t.boolean  "is_manager", default: false
-    t.boolean  "status",     default: false
+    t.integer  "status_id",  default: 1
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["club_id"], name: "index_user_clubs_on_club_id", using: :btree
+    t.index ["status_id"], name: "index_user_clubs_on_status_id", using: :btree
     t.index ["user_id", "club_id"], name: "index_user_clubs_on_user_id_and_club_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_user_clubs_on_user_id", using: :btree
   end
@@ -243,11 +252,12 @@ ActiveRecord::Schema.define(version: 20170113134100) do
   create_table "user_organizations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "organization_id"
     t.integer  "user_id"
-    t.boolean  "status",          default: false
+    t.integer  "status_id",       default: 1
     t.boolean  "is_admin",        default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.index ["organization_id"], name: "index_user_organizations_on_organization_id", using: :btree
+    t.index ["status_id"], name: "index_user_organizations_on_status_id", using: :btree
     t.index ["user_id", "organization_id"], name: "index_user_organizations_on_user_id_and_organization_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_user_organizations_on_user_id", using: :btree
   end
@@ -278,6 +288,7 @@ ActiveRecord::Schema.define(version: 20170113134100) do
 
   add_foreign_key "albums", "clubs"
   add_foreign_key "club_requests", "organizations"
+  add_foreign_key "club_requests", "statuses"
   add_foreign_key "club_requests", "users"
   add_foreign_key "clubs", "organizations"
   add_foreign_key "comments", "users"
@@ -289,13 +300,16 @@ ActiveRecord::Schema.define(version: 20170113134100) do
   add_foreign_key "messages", "users"
   add_foreign_key "news", "events"
   add_foreign_key "news", "users"
+  add_foreign_key "organization_requests", "statuses"
   add_foreign_key "organization_requests", "users"
   add_foreign_key "ratings", "users"
   add_foreign_key "target_hobbies_tags", "hobbies_tags"
   add_foreign_key "user_clubs", "clubs"
+  add_foreign_key "user_clubs", "statuses"
   add_foreign_key "user_clubs", "users"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
   add_foreign_key "user_organizations", "organizations"
+  add_foreign_key "user_organizations", "statuses"
   add_foreign_key "user_organizations", "users"
 end

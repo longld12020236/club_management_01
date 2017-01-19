@@ -5,7 +5,7 @@ class ApproveOrganizationService
   end
 
   def approve_request
-    @organization_request.update_attributes approve: true
+    @organization_request.update_attributes status_id: Settings.approved
   end
 
   def create_organization organization
@@ -20,4 +20,13 @@ class ApproveOrganizationService
     @user_organization.save
   end
 
+  def update_request value
+    @organization_request.update_attributes status_id: value
+  end
+
+  def update_service
+    approve_request
+    @organization = create_organization @organization_request
+    create_user_organization @organization.id
+  end
 end

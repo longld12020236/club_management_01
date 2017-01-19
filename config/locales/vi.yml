@@ -1,4 +1,7 @@
 vi:
+  pending: "Đang chờ"
+  reject: "Từ chối"
+  request_to_join: "yêu cầu tham gia câu lạc bộ"
   approve_success: "Chấp thuận yêu cầu thành công!"
   finished: "Kết thúc"
   spend-money: "Chi tiền"
@@ -330,7 +333,7 @@ vi:
   club_manager:
     cant_fount: "Không thể tìm thấy câu lạc bộ!"
     user_club:
-      success_update: "Duyệt thành viên thành công!"
+      success_update: "Cập nhập trạng thái thành công!"
     news:
       title: "Tiêu đề"
       content: "Nội dung"
@@ -475,3 +478,9 @@ vi:
   notification: "Thông báo"
   view_member: "Hiển thị thành viên"
   not_found_club: "Câu lạc bộ này không tồn tại"
+  views:
+    pagination:
+      first: "Đầu"
+      last: "Cuối"
+      next: "Sau"
+      previous: "Trước"

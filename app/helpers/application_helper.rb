@@ -35,4 +35,8 @@ module ApplicationHelper
     user_club = user.user_clubs.find_by club_id: club.id
     user_club.present? ? user_club.status : nil
   end
+
+  def get_all_status
+    Status.all
+  end
 end

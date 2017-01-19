@@ -23,7 +23,7 @@
               <td class="text-center"><%= image_tag request.logo,
                 class: "circle-profile-list" %></td>
               <td><%= request.name %></a></td>
-              <% if request.approve %>
+              <% if request.status_id == Settings.approved %>
                 <td><%= t "approved" %></td>
               <% else %>
                 <td><%= t "not_approve" %></td>

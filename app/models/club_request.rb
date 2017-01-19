@@ -1,9 +1,9 @@
 class ClubRequest < ApplicationRecord
   belongs_to :organization
   belongs_to :user
-  has_many :activities, as: :target, dependent: :destroy
+  belongs_to :status
 
-  enum approve: {approved: true, un_approve: false}
+  has_many :activities, as: :target, dependent: :destroy
 
   scope :order_date_desc, -> {order created_at: :desc}
 

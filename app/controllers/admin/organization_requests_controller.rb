@@ -11,24 +11,29 @@ class Admin::OrganizationRequestsController < ApplicationController
   end
 
   def update
-    ActiveRecord::Base.transaction do
-      service = ApproveOrganizationService.new @organization_request
-      service.approve_request
-      @organization = service.create_organization @organization_request
-      service.create_user_organization @organization.id
-      flash[:success] = t("approve_success")
+    service = ApproveOrganizationService.new @organization_request
+    id_status = params[:organization_request][:status_id]
+    if id_status == Settings.approved.to_s
+      ActiveRecord::Base.transaction do
+        service.update_service
+        flash[:success] = t "approve_success"
+        redirect_to admin_organization_requests_path
+      end
+    else
+      service.update_request id_status
+      flash[:success] = t "update_success"
       redirect_to admin_organization_requests_path
     end
     rescue
-      flash[:danger] = t("cant_approve")
+      flash[:danger] = t "cant_approve"
       redirect_to :back
   end
 
   def destroy
     if @organization_request.destroy
-      flash[:success] = t("deleted_successfull")
+      flash[:success] = t "deleted_successfull"
     else
-      flash[:danger] = t("delete_unsuccessfull")
+      flash[:danger] = t "delete_unsuccessfull"
     end
     render :index
   end
@@ -45,7 +50,7 @@ class Admin::OrganizationRequestsController < ApplicationController
   def load_organization_request
     @organization_request = OrganizationRequest.find_by id: params[:id]
     unless @organization_request
-      flash[:danger] = t("not_found_request")
+      flash[:danger] = t "not_found_request"
       redirect_to root_path
     end
   end
