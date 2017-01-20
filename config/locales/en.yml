@@ -1,7 +1,11 @@
 en:
+  event_status: "Status: "
+  event_is_finish: "Event already finish!!!"
+  in_process: "In process"
   request_to_join: "request to join club"
   approve_success: "Request approve successfull"
   finished: "Finished"
+  finish: "Set event finish"
   spend-money: "Spend Money"
   consumable-money: "Consume Money"
   list_news: "List news"
@@ -291,6 +295,7 @@ en:
   member:
     clubs: "Clubs joined"
     show: "Show member"
+    money: "Money: "
   club_manager:
     cant_fount: "Can found club!"
     user_club:
@@ -328,6 +333,7 @@ en:
       success_create: "Create new album successfull!"
       success_update: "Album's name update successfull!"
     event:
+      status: "Status"
       new: "New event"
       name_guide: "Event's name cant blank and must have atleast 10 character!"
       expense: "Event's expense"

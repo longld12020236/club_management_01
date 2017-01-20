@@ -1,6 +1,7 @@
 class ClubManager::EventsController < BaseClubManagerController
   before_action :load_club
   before_action :load_event, except: [:index, :create, :new]
+  before_action :is_finished, only: :edit
 
   def index
     unless @club
@@ -32,12 +33,15 @@ class ClubManager::EventsController < BaseClubManagerController
 
   def update
     if @event.update_attributes event_params
+      service = UpdateClubMoney.new @event, @club
+      service.update_money
       create_acivity @event, current_user, Settings.update
       flash[:success] = t "club_manager.event.success_update"
+      redirect_to club_manager_club_event_path(id: @event.id)
     else
       flash_error @event
+      redirect_to :back
     end
-    redirect_to :back
   end
 
   def show
@@ -62,7 +66,14 @@ class ClubManager::EventsController < BaseClubManagerController
   end
 
   def event_params
-    params.require(:event).permit :club_id, :name, :date_start,
+    params.require(:event).permit :club_id, :name, :date_start, :is_finish,
       :expense, :date_end, :location, :description, :image, :event_category_id
+  end
+
+  def is_finished
+    if @event.is_finish?
+      flash[:danger] = t "event_is_finish"
+      redirect_to :back
+    end
   end
 end

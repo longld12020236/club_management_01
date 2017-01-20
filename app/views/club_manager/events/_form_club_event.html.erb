@@ -8,8 +8,20 @@
     </label>
     <div class="col-md-7">
       <%= f.select :event_category_id,
-        EventCategory.take(Settings.event_type).collect {|item| [ t("#{item.name.parameterize}"), item.id ]}, {},
-        {class: "form-control selectpicker", "data-live-search": true, selected:  @event.event_category_id} %>
+        EventCategory.take(Settings.event_type).collect {|item| [ t("#{item.name.parameterize}"),
+        item.id ]}, {}, {class: "form-control selectpicker",
+        "data-live-search": true, selected: @event.event_category_id} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="example-text-input">
+      <%= t "club_manager.event.status" %>
+    </label>
+    <div class="col-md-7">
+      <%= f.radio_button :is_finish, "in_process", checked: !@event.is_finish? %>
+      <%= f.label :is_finish_in_procress, t("in_process") %>
+      <%= f.radio_button :is_finish, "finished", checked: @event.is_finish? %>
+      <%= f.label :is_finish_finished, t("finished") %>
     </div>
   </div>
   <div class="form-group">
@@ -59,6 +71,14 @@
     </div>
   </div>
   <div class="form-group">
+    <label class="col-md-3 control-label" for="example-file-input">
+      <%= t "club_manager.event.image" %>
+    </label>
+    <div class="col-md-7">
+      <%= f.file_field :image %>
+    </div>
+  </div>
+  <div class="form-group">
     <label class="col-md-3 control-label" for="example-textarea-input">
       <%= t "description" %>
     </label>
@@ -66,14 +86,6 @@
       <%= f.text_area :description, rows: Settings.new_description,
         class: "form-control ckeditor", id: "ckeditor",
         placeholder: t("club_manager.event.description") %>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-md-3 control-label" for="example-file-input">
-      <%= t "club_manager.event.image" %>
-    </label>
-    <div class="col-md-7">
-      <%= f.file_field :image %>
     </div>
   </div>
   <div class="form-group form-actions">

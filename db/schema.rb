@@ -119,8 +119,9 @@ ActiveRecord::Schema.define(version: 20170113134100) do
     t.text     "location",          limit: 65535
     t.integer  "num_like",                        default: 0
     t.string   "image"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.boolean  "is_finish",                       default: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.index ["club_id"], name: "index_events_on_club_id", using: :btree
     t.index ["event_category_id"], name: "index_events_on_event_category_id", using: :btree
   end

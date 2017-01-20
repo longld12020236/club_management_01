@@ -30,5 +30,7 @@ min_content: 10
 club_event: 4
 event_news: 4
 club_member: 6
-approve: "2"
 approved: 2
+finished: finished
+spend: 1
+consum: 2
